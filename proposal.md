@@ -25,6 +25,7 @@ I picked this game as it presents a challenge to figure out the logic behind obj
   *  Defining maybe few sublassses of enemy ships
 ## Phases of Completion
 
+(/Users/student_17/PROJECTS/Project-1-GA-/screenshots/wFrame1.jpg)
 (The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.)
 
 ## Links and Resources
