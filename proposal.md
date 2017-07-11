@@ -16,6 +16,8 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 ## Initial thoughts on game structure
 
 (Write out what challenges you expect to encounter, or ideas you want to come up with)
+* Logic / Algoritham behind collision (collision of laser cannon and the enemy ship
+* Prototype: to create numerous enemy ships
 
 ## Phases of Completion
 
