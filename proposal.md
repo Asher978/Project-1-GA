@@ -1,0 +1,26 @@
+*** Asher Shaheen / 07-11-2017 ***
+
+[Space Code Invaders] Proposal
+What is Space Code Invaders?
+
+(Brief description of the game, why you're choosing to make it)
+**Space Code Invaders** is a two-dimensional first shooter game. It is inspired by the original *Space Invaders* created by *Tomohiro Nishikado* and released in *1978*. The logic of the game is that user defeats the wave of alien ships with a laser canon and earns as many points as he/she can. 
+
+I picked this game as it presents a challenge to figure out the logic behind object collisions and use of prototypes. My learning objective behind this is to strengthen my knowledge on the material that has been presented to me in last 2 weeks. 
+
+
+Wireframe
+
+(Your wireframes go here. Preferably two or more)
+
+Initial thoughts on game structure
+
+(Write out what challenges you expect to encounter, or ideas you want to come up with)
+
+Phases of Completion
+
+(The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.)
+
+Links and Resources
+
+(Anything you've looked up so far or are thinking about using.)
