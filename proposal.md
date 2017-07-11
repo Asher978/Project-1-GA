@@ -31,4 +31,4 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 
 ## Links and Resources
 
-(Anything you've looked up so far or are thinking about using.)
+![Screen Shot](Anything you've looked up so far or are thinking about using.)
