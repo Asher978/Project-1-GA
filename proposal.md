@@ -16,9 +16,13 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 ## Initial thoughts on game structure
 
 (Write out what challenges you expect to encounter, or ideas you want to come up with)
-* Logic / Algoritham behind collision (collision of laser cannon and the enemy ship)
+* Logic / Algoritham behind collision 
+  *  collision of laser cannon and the enemy ship
+  *  collision of the user ship to the enemy ship
+  *  setting boundries so the enemy ship and the user ship can not go out of the game space/box
 * Prototype: to create numerous enemy ships
   *  create an army of enemy ships that share the same properties and function
+  *  Defining maybe few sublassses of enemy ships
 ## Phases of Completion
 
 (The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.)
