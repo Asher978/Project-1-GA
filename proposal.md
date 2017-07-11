@@ -1,9 +1,9 @@
 *** Asher Shaheen / 07-11-2017 ***
 
-[Space Code Invaders] Proposal
-What is Space Code Invaders?
+ #[Space Code Invaders] Proposal
 
-(Brief description of the game, why you're choosing to make it)
+
+## What is Space Code Invaders?
 **Space Code Invaders** is a two-dimensional first shooter game. It is inspired by the original *Space Invaders* created by *Tomohiro Nishikado* and released in *1978*. The logic of the game is that user defeats the wave of alien ships with a laser canon and earns as many points as he/she can. 
 
 I picked this game as it presents a challenge to figure out the logic behind object collisions and use of prototypes. My learning objective behind this is to strengthen my knowledge on the material that has been presented to me in last 2 weeks. 
