@@ -11,7 +11,7 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 
 ## Wireframe
 
-![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame1.JPG)(https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame2.JPG)
+![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame1.JPG)![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame2.JPG)
 
 ## Initial thoughts on game structure
 
