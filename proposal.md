@@ -25,10 +25,10 @@ I picked this game as it presents a challenge to figure out the logic behind obj
   *  Defining maybe few sublassses of enemy ships
 ## Phases of Completion
 
-(https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame1.JPG)
+![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/wFrame1.JPG)
 
 
 
 ## Links and Resources
 
-![Screen Shot](Anything you've looked up so far or are thinking about using.)
+(Anything you've looked up so far or are thinking about using.)
