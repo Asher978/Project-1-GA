@@ -15,7 +15,6 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 
 ## Initial thoughts on game structure
 
-(Write out what challenges you expect to encounter, or ideas you want to come up with)
 * Logic / Algoritham behind collision 
   *  collision of laser cannon and the enemy ship
   *  collision of the user ship to the enemy ship
@@ -23,6 +22,8 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 * Prototype: to create numerous enemy ships
   *  create an army of enemy ships that share the same properties and function
   *  Defining maybe few sublassses of enemy ships
+  *  Using prototype functions to check collions
+* Using localStorage to keep scores
 ## Phases of Completion
 
 ![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/ProjectPhase.png)
