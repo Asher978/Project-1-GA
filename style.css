@@ -5,9 +5,10 @@ body{
     position: relative;
     border: 5px solid rgba(0,0,0,0.7);
     height: 90vh;
-     background: url(./images/bgPic1.jpeg); 
+    background: url(./images/bgPic1.jpeg); 
     background-repeat: no-repeat;
     background-size: cover;
+    /* top: 100px; */
 }
 #paddle1{
     left: 0px;
@@ -32,5 +33,5 @@ body{
     width:40px;
     height:40px;
     background-color:red;
-    /* border-radius:20px; */
+     border-radius:50%; 
 }
