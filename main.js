@@ -1,19 +1,20 @@
 /* --------------------------------
   assigning all global variables
 --------------------------------- */
-var padHeight = 180;
-var ballRadius = 20; // ball radius
-var half_padHeight = padHeight / 2; // half of pad height
-var speedPad1 = 0;
-var speedPad2 = 0;
-var topPosPad1 = 460; // left paddle
-var topPosPad2 = 460; // right paddle
-var topPosBall = 310;
-var leftPosBall = 620;
-var topSpeedOfBall = 0;
-var leftSpeedOfBall = 0;
-var score1;
-var score2;
+let padHeight = 180;
+let ballRadius = 20; // ball radius
+let half_padHeight = padHeight / 2; // half of pad height
+let padWidth = 20;
+let speedPad1 = 0;
+let speedPad2 = 0;
+let topPosPad1 = 460; // left paddle
+let topPosPad2 = 460; // right paddle
+let topPosBall = 310;
+let leftPosBall = 620;
+let topSpeedOfBall = 0;
+let leftSpeedOfBall = 0;
+let score1;
+let score2;
 
 /*----------------------------------------------------------
 Creating the game components and appending them to the BODY
@@ -49,20 +50,43 @@ document.addEventListener('keydown', (e) => {
     $('#paddle2').css({'top' : topPosPad2 + 'px'});
     break;
     default:
-    console.log('incorrect key')
+    console.log('incorrect key');
     break;
   }
 },false);
 
 /* --------------------------------------------------------- 
 Integrating a function for smooth movements of the paddle
+and stopping the paddle to go out of the container
 ---------------------------------------------------------- */
 window.setInterval(function smoothMovement() {
+  let wind_height = ((window.innerHeight * 90) / 100); //<---container's height is 90vh
   topPosPad1 += speedPad1;
   topPosPad2 += speedPad2;
+  topPosBall += topSpeedOfBall;
+  leftPosBall += leftSpeedOfBall;
+  (topPosPad1 <= 1) ? (topPosPad1=1) : false; // Pad 1 restruction (top)
+  (topPosPad2 <= 1) ? (topPosPad2=1) : false; // Pad 2 restriction (top)
+  (topPosPad1 >= (wind_height-padHeight)) ? (topPosPad1=wind_height-padHeight) : false; // Pad 1 restr(bttm)
+  (topPosPad2 >= (wind_height-padHeight)) ? (topPosPad2=wind_height-padHeight) : false; // Pad 2 restr(bttm)
+  // ball collision with top and bottom
+  (topPosBall <= 1 || topPosBall >= wind_height-ballRadius) ? (topSpeedOfBall = -topSpeedOfBall) : false; 
+  // ball collision with left and right paddles
+  if (leftPosBall <= padWidth)  {
+    if(topPosBall > topPosPad1 && topPosBall < topPosPad1 + padHeight) {
+      leftSpeedOfBall = -leftSpeedOfBall;
+    } else {
+      ballMove();
+    }
+  }
+  
 
-  document.getElementById('paddle1').style.top = (topPosPad1) + 'px';
-  document.getElementById('paddle2').style.top = (topPosPad2) + 'px';
+
+  $('#paddle1').css({'top' : topPosPad1 + 'px'});
+  $('#paddle2').css({'top' : topPosPad2 + 'px'});
+  $('#ball').css({'top' : topPosBall + 'px'});
+  $('#ball').css({'left' : leftPosBall + 'px'});
+
 }, 1000/70);
 
 /*------------------------------------------------------------------
@@ -84,3 +108,16 @@ document.addEventListener('keyup', (e) => {
     break;
   }
 }, false)
+
+
+let ballMove = () => {
+  topPosBall = 310;
+  leftPosBall = 620;
+  if (Math.random() < 0.5)  {
+    var x = 1;
+  } else {
+    var x = -1;
+  }
+  topSpeedOfBall = Math.random() * 2 + 3;
+  leftSpeedOfBall = x * (Math.random() * 2 * 3);
+};
