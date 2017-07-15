@@ -33,14 +33,8 @@ $('#score1').css({color : 'white', left: '550px', position: 'absolute'});
 $('#score2').css({color : 'white', right: '500px', position: 'absolute'});
 let player1 = prompt('Player 1: Please enter your Name!');
 let player2 = prompt('Player 2: Please enter your Name!');
+$('<button id="start" onClick="ballMove();clearGif()">').text('START').css({position: 'absolute', bottom: '-30px', left: '45vw', width: '50px'}).appendTo($container)
 
-/* 	<video class="logo" autoplay loop>
-			<source src="mainvideo.mp4" type="video/mp4">
-			<source src="mainvideo.webm" type="video/webm">
-		</video>
-
-<video width="624" height="352" controls>
-<source src="Brave.mp4" type="video/mp4"> */
 
 /* --------------------------------------------------------------------------
  assigning eventlisteners to the paddles to detect movement by key presses
@@ -72,22 +66,10 @@ document.addEventListener('keydown', (e) => {
     break;
   }
 },false);
-// let afterWin = () => {
-//   $('#win').remove();
-//   window.confirm('Would you like to play again?')
-//   topPosBall = 310;
-//   leftPosBall = 620;
-//   if (Math.random() < 0.5)  {
-//     var x = 1;
-//   } else {
-//     var x = -1;
-//   }
-//   topSpeedOfBall = Math.random() * -2 - 4;  //TODO: change the values to add difficulty levels
-//   leftSpeedOfBall = x * (Math.random() * 2 + 4);
-// }
+
 
 let ballMove = () => {
-  // $('#win').remove();
+  
   topPosBall = 310;
   leftPosBall = 620;
   if (Math.random() < 0.5)  {
@@ -95,13 +77,15 @@ let ballMove = () => {
   } else {
     var x = -1;
   }
-  topSpeedOfBall = Math.random() * 2+3;  //TODO: change the values to add difficulty levels
-  leftSpeedOfBall = x * Math.random() * 2+3;
-  
+  topSpeedOfBall = Math.random() * 6+7;  //TODO: change the values to add difficulty levels
+  leftSpeedOfBall = x * (Math.random() * 6+7);
   // console.log(topSpeedOfBall);
   // console.log(leftSpeedOfBall);
-  
 };
+
+let clearGif = () => {
+  $('#win').remove();
+}
 
 let checkWin = () => {
   let winScore = 3;
@@ -167,11 +151,13 @@ window.setInterval(function smoothMovement() {
       leftSpeedOfBall = -leftSpeedOfBall;
       sound.play()
     } else {
-     
-      setTimeout(function () {checkWin()}, 500);
       score2++;
-      $('#win').remove();
-      ballMove()
+      checkWin()
+      ballMove();
+      topSpeedOfBall=0;
+      leftSpeedOfBall=0;
+      // $('#win').remove();
+
     }
   }
   /*-----------------------------------
@@ -183,11 +169,13 @@ window.setInterval(function smoothMovement() {
       leftSpeedOfBall = -leftSpeedOfBall;
       sound.play();
     } else {
-      
-      setTimeout(function () {checkWin()}, 500);
       score1++;
-      $('#win').remove();
+      checkWin()
       ballMove();
+      topSpeedOfBall=0;
+      leftSpeedOfBall=0;
+      // $('#win').remove();
+      
     }
   } 
   $('#score1').text(player1+ ": " + score1.toString());
