@@ -14,8 +14,8 @@ let leftPosBall = 620; // x-axis of the ball
 let rightPosPad2 = 1400;
 let topSpeedOfBall = 0;
 let leftSpeedOfBall = 0;
-let score1;
-let score2;
+let score1=0;
+let score2=0;
 let sound = new Audio("ball.mp3"); 
 
 
@@ -26,6 +26,21 @@ const $container = $('<div id="container">').appendTo('body');
 const $leftPaddle = $('<div id="paddle1">').appendTo($container);
 const $rightPaddle = $('<div id="paddle2">').appendTo($container);
 const $ball = $('<div id="ball">').appendTo($container);
+const $score1 = $('<h1 id="score1">').appendTo($container);
+const $score2 = $('<h1 id="score2">').appendTo($container);
+
+$('#score1').css({color : 'white', left: '550px', position: 'absolute'});
+$('#score2').css({color : 'white', right: '500px', position: 'absolute'});
+let player1 = prompt('Player 1: Please enter your Name!');
+let player2 = prompt('Player 2: Please enter your Name!');
+
+/* 	<video class="logo" autoplay loop>
+			<source src="mainvideo.mp4" type="video/mp4">
+			<source src="mainvideo.webm" type="video/webm">
+		</video>
+
+<video width="624" height="352" controls>
+<source src="Brave.mp4" type="video/mp4"> */
 
 /* --------------------------------------------------------------------------
  assigning eventlisteners to the paddles to detect movement by key presses
@@ -57,6 +72,64 @@ document.addEventListener('keydown', (e) => {
     break;
   }
 },false);
+// let afterWin = () => {
+//   $('#win').remove();
+//   window.confirm('Would you like to play again?')
+//   topPosBall = 310;
+//   leftPosBall = 620;
+//   if (Math.random() < 0.5)  {
+//     var x = 1;
+//   } else {
+//     var x = -1;
+//   }
+//   topSpeedOfBall = Math.random() * -2 - 4;  //TODO: change the values to add difficulty levels
+//   leftSpeedOfBall = x * (Math.random() * 2 + 4);
+// }
+
+let ballMove = () => {
+  // $('#win').remove();
+  topPosBall = 310;
+  leftPosBall = 620;
+  if (Math.random() < 0.5)  {
+    var x = 1;
+  } else {
+    var x = -1;
+  }
+  topSpeedOfBall = Math.random() * 2+3;  //TODO: change the values to add difficulty levels
+  leftSpeedOfBall = x * Math.random() * 2+3;
+  
+  // console.log(topSpeedOfBall);
+  // console.log(leftSpeedOfBall);
+  
+};
+
+let checkWin = () => {
+  let winScore = 3;
+  if (score1===winScore) {
+    alert(player1 + ' You have won the game');
+    const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
+    const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
+    const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
+    score1 = 0;
+    score2 = 0;
+  }
+  // $('#win').remove();
+  // prompt('Would you like to play again?')
+
+  if (score2===winScore) {
+    alert(player2 + ' You have won the game');
+    const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
+    const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
+    const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
+    score2 = 0;
+    score1 = 0;
+  } 
+  // $('#win').remove();
+  // prompt('Would you like to play again?')
+}
+// window.setInterval(ballMove (), 1000/200);
+
+
 
 /* --------------------------------------------------------- 
 Integrating a function for smooth movements of the paddle
@@ -69,6 +142,7 @@ window.setInterval(function smoothMovement() {
   topPosPad2 += speedPad2;
   topPosBall += topSpeedOfBall;
   leftPosBall += leftSpeedOfBall;
+  // score1 = 0;
   $('#paddle1').css({'top' : topPosPad1 + 'px'});
   $('#paddle2').css({'top' : topPosPad2 + 'px'});
   $('#ball').css({'top' : topPosBall + 'px'});
@@ -91,9 +165,13 @@ window.setInterval(function smoothMovement() {
   if (leftPosBall <= padWidth)  {
     if(topPosBall > topPosPad1 && topPosBall < topPosPad1 + padHeight) {
       leftSpeedOfBall = -leftSpeedOfBall;
-      // sound.play()
+      sound.play()
     } else {
-      ballMove();
+     
+      setTimeout(function () {checkWin()}, 500);
+      score2++;
+      $('#win').remove();
+      ballMove()
     }
   }
   /*-----------------------------------
@@ -101,15 +179,19 @@ window.setInterval(function smoothMovement() {
   ------------------------------------*/
   if ((leftPosBall+40) >= (wind_width - ballRadius - padWidth)) {
     console.log('collision')
-    if (topPosBall > topPosPad2 && topSpeedOfBall < topPosPad2 + padHeight) {
+    if (topPosBall > topPosPad2 && topPosBall < topPosPad2 + padHeight) {
       leftSpeedOfBall = -leftSpeedOfBall;
+      sound.play();
     } else {
-      ballMove(); 
-  }
-
-}
-  
-
+      
+      setTimeout(function () {checkWin()}, 500);
+      score1++;
+      $('#win').remove();
+      ballMove();
+    }
+  } 
+  $('#score1').text(player1+ ": " + score1.toString());
+  $('#score2').text(player2 + ": " + score2.toString());
 }, 1000/70);
 
 /*------------------------------------------------------------------
@@ -133,16 +215,4 @@ document.addEventListener('keyup', (e) => {
 }, false)
 
 
-let ballMove = () => {
-  topPosBall = 310;
-  leftPosBall = 620;
-  if (Math.random() < 0.5)  {
-    var x = 1;
-  } else {
-    var x = -1;
-  }
-  topSpeedOfBall = Math.random() * -2 - 3;
-  leftSpeedOfBall = x * (Math.random() * 2 + 3);
-  console.log(topSpeedOfBall);
-  console.log(leftSpeedOfBall);
-};
+
