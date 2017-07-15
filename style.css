@@ -17,6 +17,7 @@ body{
     position:absolute;
     height:180px;
     background-color:grey;
+    transition: 100ms;
 }
 #paddle2{
     position:absolute;
@@ -34,5 +35,16 @@ body{
     width:40px;
     height:40px;
     background-color:red;
-     border-radius:50%; 
+    border-radius:50%; 
+     /* transition: 1s;  */
+}
+#win{
+    height: 90vh;
+    width: 90vw;  
+    position: absolute;
+    margin: 0 auto;
+    /* background-image: url(.images/giphy.mp4); */
+    /* background-size: cover; */
+    /* background-color: pink; */
+    /* background-repeat: no-repeat; */
 }
