@@ -37,8 +37,10 @@ $('#score1').css({color : 'white', left: '550px', position: 'absolute'});
 $('#score2').css({color : 'white', right: '500px', position: 'absolute'});
 let player1 = prompt('Player 1: Please enter your Name!');
 let player2 = prompt('Player 2: Please enter your Name!');
-$('<button id="start" onClick="ballMove()">').text('START').css({position: 'absolute', bottom: '-50px', left: '50vw', width: '65px'}).appendTo($container)
-$('<button id="reset" onClick="clearGif()">').text('RESTART').css({position: 'absolute', bottom: '-50px', left: '40vw', width: '85px'}).appendTo($container)
+$('<button id="start" onClick="ballMove()">').text('START').css({position: 'absolute'}).appendTo($container)
+$('<button id="reset" onClick="clearGif()">').text('CLEAR').css({position: 'absolute',}).appendTo($container)
+$('<p id="directions">').text('Press "CLEAR" to reset scores and begin a new game').css({position: 'absolute', bottom: '-40px'}).appendTo($container)
+$('<p id="directions">').text('Press "START" or hit the "space bar" to spawn the ball').css({position: 'absolute', bottom: '-60px'}).appendTo($container)
 
 /* --------------------------------------------------------------------------
  assigning eventlisteners to the paddles to detect movement by key presses
@@ -64,6 +66,9 @@ document.addEventListener('keydown', (e) => {
     topPosPad2 += 10;
     speedPad2 = 10;
     $('#paddle2').css({'top' : topPosPad2 + 'px'});
+    break;
+    case 32:
+    ballMove();
     break;
     default:
     // console.log('incorrect key');
@@ -95,6 +100,8 @@ Clearing the wining GIF
 -----------------------*/
 let clearGif = () => {
   $('#win').remove();
+  score1=0;
+  score2=0;
 }
 /*--------------------------
 checking the win conditions 
@@ -190,7 +197,7 @@ window.setInterval(function smoothMovement() {
   /*-----------------------------------
   ball collision with the right  paddle
   ------------------------------------*/
-  let bttmPosPad2 = topPosPad1+padHeight;
+  let bttmPosPad2 = topPosPad2+padHeight;
   if ((leftPosBall+40) >= (wind_width - ballRadius - padWidth)) {
     console.log('collision')
     if (topPosBall > topPosPad2 && topPosBall < bttmPosPad2) {
