@@ -17,6 +17,8 @@ let leftSpeedOfBall = 0;
 let score1=0;
 let score2=0;
 let sound = new Audio("ball.mp3"); 
+// let Score1; // for localStorage use
+// let Score2; // for localStorage use
 
 
 /*----------------------------------------------------------
@@ -32,6 +34,7 @@ const $sign1 = $('<p id="sign1">').appendTo($container);
 const $sign2 = $('<p id="sign2">').appendTo($container);
 const $tumUp = $('<i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i>');
 const $tumDown = $('<i class="fa fa-thumbs-down fa-5x" aria-hidden="true"></i>');
+const $scoreDisplay = $('<h2 id="highScore">').appendTo($container);
 
 $('#score1').css({color : 'white', left: '550px', position: 'absolute'});
 $('#score2').css({color : 'white', right: '500px', position: 'absolute'});
@@ -67,9 +70,6 @@ document.addEventListener('keydown', (e) => {
     speedPad2 = 10;
     $('#paddle2').css({'top' : topPosPad2 + 'px'});
     break;
-    case 32:
-    ballMove();
-    break;
     default:
     // console.log('incorrect key');
     break;
@@ -91,8 +91,6 @@ let ballMove = () => {
   leftSpeedOfBall = x * (Math.random() * 7+8);
   // console.log(topSpeedOfBall);
   // console.log(leftSpeedOfBall);
-  // $('#sign1').removeClass('fa fa-thumbs-up fa-5x');
-  // $('#sign2').removeClass('fa fa-thumbs-up fa-5x');
 };
 
 /* ---------------------
@@ -103,11 +101,14 @@ let clearGif = () => {
   score1=0;
   score2=0;
 }
+
+
+
 /*--------------------------
 checking the win conditions 
 ---------------------------*/
 let checkWin = () => {
-  let winScore = 10;
+  let winScore = 3;
   if (score1===winScore) {
     alert(player1 + ' You have won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
@@ -115,14 +116,17 @@ let checkWin = () => {
     const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
     score1 = 0;
     score2 = 0;
+    
   }
   if (score2===winScore) {
+    
     alert(player2 + ' You have won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
     const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
     score2 = 0;
     score1 = 0;
+
   } 
 }
 /* --------------------------------------------------------------------------------------------- 
@@ -161,10 +165,13 @@ window.setInterval(function smoothMovement() {
   $('#ball').css({'left' : leftPosBall + 'px'});
   $('#score1').text(player1+ ": " + score1.toString()); 
   $('#score2').text(player2 + ": " + score2.toString());
+  
   (topPosPad1 < 1) ? (topPosPad1=1) : false; // Pad 1 restruction (top)
   (topPosPad2 < 1) ? (topPosPad2=1) : false; // Pad 2 restriction (top)
   (topPosPad1 >= (wind_height-padHeight)) ? (topPosPad1=wind_height-padHeight) : false; // Pad 1 restr(bttm)
   (topPosPad2 >= (wind_height-padHeight)) ? (topPosPad2=wind_height-padHeight) : false; // Pad 2 restr(bttm)
+
+  console.log($score1);
 
   /*-----------------------------------------
   ball collision with the top & bottom walls
@@ -183,7 +190,9 @@ window.setInterval(function smoothMovement() {
       score2++;
       $('#sign2').addClass('fa fa-thumbs-up fa-5x');
       $('#sign1').addClass('fa fa-thumbs-down fa-5x');
-      checkWin()
+      setTimeout(function () {
+        checkWin()
+      }, 500); 
       ballMove();
       topSpeedOfBall=0;
       leftSpeedOfBall=0;
@@ -207,7 +216,9 @@ window.setInterval(function smoothMovement() {
       score1++;
       $('#sign1').addClass('fa fa-thumbs-up fa-5x');
       $('#sign2').addClass('fa fa-thumbs-down fa-5x');
-      checkWin()
+      setTimeout(function () {
+        checkWin()
+      }, 500);
       ballMove();
       topSpeedOfBall=0;
       leftSpeedOfBall=0;
