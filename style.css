@@ -48,6 +48,11 @@ body{
     width: 100%;  
     position: absolute;
 }
+#highScore{
+    position: absolute;
+    right: 0px;
+    bottom: -55px;
+}
 #reset{
     background-color: black;
     color: white;
