@@ -5,7 +5,7 @@ body{
     position: relative;
     border: 5px solid rgba(0,0,0,0.7);
     height: 90vh;
-    background: url(./images/bgPic1.jpeg); 
+     background: url(./images/bgPic1.jpeg);  
     background-repeat: no-repeat;
     background-size: cover;
     /* top: 100px; */
@@ -17,7 +17,7 @@ body{
     position:absolute;
     height:180px;
     background-color:grey;
-    transition: 100ms;
+    /* transition: 100ms; */
 }
 #paddle2{
     position:absolute;
@@ -40,11 +40,45 @@ body{
 }
 #win{
     height: 90vh;
-    width: 90vw;  
+    width: 100%;  
     position: absolute;
-    margin: 0 auto;
-    /* background-image: url(.images/giphy.mp4); */
-    /* background-size: cover; */
-    /* background-color: pink; */
-    /* background-repeat: no-repeat; */
+}
+#reset{
+    background-color: red;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1em;
+}
+#start{
+    font-size: 1em;
+    height: 40px;   
+    border-radius: 10px;
+}
+#sign1{
+     position: absolute; 
+    top: 20px;
+    left: 50px;
+    height:40px;
+    width: 100px;
+}
+#sign2{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    height:40px;
+    width: 100px;
+}
+.fa{
+    color: silver; 
+    animation: blink .5s linear infinite;
+}
+@keyframes blink {
+  0% { 
+      opacity: 1; 
+      color: red;
+    }
+  50% { 
+      opacity: 0;
+      color:blue;
+    }
 }
