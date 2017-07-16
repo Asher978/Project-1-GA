@@ -1,3 +1,10 @@
+@font-face {
+        font-family: "Ping Pong";
+        src: url(pingpong.ttf);
+}
+* {
+    font-family: "Ping Pong";
+}
 body{
     position: relative;
 }
@@ -26,7 +33,6 @@ body{
     width:20px;
     height:180px;
     background-color:grey;
-    /* border: 1px solid red; */
 }
 #ball{
     position:absolute;
@@ -36,7 +42,6 @@ body{
     height:40px;
     background-color:red;
     border-radius:50%; 
-     /* transition: 1s;  */
 }
 #win{
     height: 90vh;
@@ -44,15 +49,41 @@ body{
     position: absolute;
 }
 #reset{
-    background-color: red;
+    background-color: black;
+    color: white;
     height: 40px;
     border-radius: 10px;
-    font-size: 1em;
+    border: 1px solid rgba(0,0,0,0.7);
+    font-size: 1.2em;
+    bottom: -50px;
+    left: 40vw;
+    width: 85px;
+    opacity: .6;
+}
+#reset:hover{
+    /* bottom: -50.5px; */
+    /* background-color: blue; */
+    /* left: 40.1vw; */
+    transition:linear 1s;
+    opacity: 1;
+    border: none;
 }
 #start{
-    font-size: 1em;
-    height: 40px;   
+    background-color: black;
+    color: white;
+    height: 40px;
     border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.7);
+    font-size: 1.2em;
+    bottom: -50px;
+    left: 50vw;
+    width: 65px;
+    opacity: .6;
+}
+#start:hover{
+    opacity: 1;
+    transition: linear 1s;
+    border: none;
 }
 #sign1{
      position: absolute; 
