@@ -28,13 +28,17 @@ const $rightPaddle = $('<div id="paddle2">').appendTo($container);
 const $ball = $('<div id="ball">').appendTo($container);
 const $score1 = $('<h1 id="score1">').appendTo($container);
 const $score2 = $('<h1 id="score2">').appendTo($container);
+const $sign1 = $('<p id="sign1">').appendTo($container);
+const $sign2 = $('<p id="sign2">').appendTo($container);
+const $tumUp = $('<i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i>');
+const $tumDown = $('<i class="fa fa-thumbs-down fa-5x" aria-hidden="true"></i>');
 
 $('#score1').css({color : 'white', left: '550px', position: 'absolute'});
 $('#score2').css({color : 'white', right: '500px', position: 'absolute'});
 let player1 = prompt('Player 1: Please enter your Name!');
 let player2 = prompt('Player 2: Please enter your Name!');
-$('<button id="start" onClick="ballMove();clearGif()">').text('START').css({position: 'absolute', bottom: '-30px', left: '45vw', width: '50px'}).appendTo($container)
-
+$('<button id="start" onClick="ballMove()">').text('START').css({position: 'absolute', bottom: '-50px', left: '50vw', width: '65px'}).appendTo($container)
+$('<button id="reset" onClick="clearGif()">').text('RESTART').css({position: 'absolute', bottom: '-50px', left: '40vw', width: '85px'}).appendTo($container)
 
 /* --------------------------------------------------------------------------
  assigning eventlisteners to the paddles to detect movement by key presses
@@ -62,14 +66,15 @@ document.addEventListener('keydown', (e) => {
     $('#paddle2').css({'top' : topPosPad2 + 'px'});
     break;
     default:
-    console.log('incorrect key');
+    // console.log('incorrect key');
     break;
   }
 },false);
 
-
+/*----------------------------------------------------
+Ball movement and change of direction after every turn
+-----------------------------------------------------*/
 let ballMove = () => {
-  
   topPosBall = 310;
   leftPosBall = 620;
   if (Math.random() < 0.5)  {
@@ -77,18 +82,25 @@ let ballMove = () => {
   } else {
     var x = -1;
   }
-  topSpeedOfBall = Math.random() * 6+7;  //TODO: change the values to add difficulty levels
-  leftSpeedOfBall = x * (Math.random() * 6+7);
+  topSpeedOfBall = Math.random() * 7+8;  //TODO: change the values to add difficulty levels
+  leftSpeedOfBall = x * (Math.random() * 7+8);
   // console.log(topSpeedOfBall);
   // console.log(leftSpeedOfBall);
+  // $('#sign1').removeClass('fa fa-thumbs-up fa-5x');
+  // $('#sign2').removeClass('fa fa-thumbs-up fa-5x');
 };
 
+/* ---------------------
+Clearing the wining GIF
+-----------------------*/
 let clearGif = () => {
   $('#win').remove();
 }
-
+/*--------------------------
+checking the win conditions 
+---------------------------*/
 let checkWin = () => {
-  let winScore = 3;
+  let winScore = 10;
   if (score1===winScore) {
     alert(player1 + ' You have won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
@@ -97,9 +109,6 @@ let checkWin = () => {
     score1 = 0;
     score2 = 0;
   }
-  // $('#win').remove();
-  // prompt('Would you like to play again?')
-
   if (score2===winScore) {
     alert(player2 + ' You have won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
@@ -108,83 +117,105 @@ let checkWin = () => {
     score2 = 0;
     score1 = 0;
   } 
-  // $('#win').remove();
-  // prompt('Would you like to play again?')
 }
-// window.setInterval(ballMove (), 1000/200);
-
-
-
-/* --------------------------------------------------------- 
+/* --------------------------------------------------------------------------------------------- 
 Integrating a function for smooth movements of the paddle
 and stopping the paddle to go out of the container
----------------------------------------------------------- */
+
+The following source was used as refernce to compile some of the collision detections 
+of the ball and the paddle: 
+"http://learning-computer-programming.blogspot.com/2009/09/simple-pong-game-using-javascript.html"
+ // COLLISION DETECTION
+
+   // If ball hits upper or lower wall
+   if(ballY < 0 || ((ballY + ball.offsetHeight) > box.offsetHeight))
+      dy = -dy; // Make x direction opposite
+
+   // If ball hits player paddle
+   if(ballX < (paddle1.offsetLeft + paddle1.offsetWidth))
+      if(((ballY + ball.offsetHeight) > playerY) && ballY < (playerY + paddle1.offsetHeight))
+         dx = -dx;
+
+   // If ball hits CPU paddle
+   if((ballX + ball.offsetWidth) > paddle2.offsetLeft)
+      if(((ballY + ball.offsetHeight) > cpuY) && ballY < (cpuY + paddle2.offsetHeight))
+         dx = -dx;
+---------------------------------------------------------------------------------------------- */
 window.setInterval(function smoothMovement() {
   let wind_height = ((window.innerHeight * 90) / 100); //<---container's height is 90vh
-  let wind_width = window.innerWidth;
+  let wind_width = window.innerWidth; // Referenced from here: https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
   topPosPad1 += speedPad1;
   topPosPad2 += speedPad2;
   topPosBall += topSpeedOfBall;
   leftPosBall += leftSpeedOfBall;
-  // score1 = 0;
   $('#paddle1').css({'top' : topPosPad1 + 'px'});
   $('#paddle2').css({'top' : topPosPad2 + 'px'});
   $('#ball').css({'top' : topPosBall + 'px'});
   $('#ball').css({'left' : leftPosBall + 'px'});
-  (topPosPad1 <= 1) ? (topPosPad1=1) : false; // Pad 1 restruction (top)
-  (topPosPad2 <= 1) ? (topPosPad2=1) : false; // Pad 2 restriction (top)
+  $('#score1').text(player1+ ": " + score1.toString()); 
+  $('#score2').text(player2 + ": " + score2.toString());
+  (topPosPad1 < 1) ? (topPosPad1=1) : false; // Pad 1 restruction (top)
+  (topPosPad2 < 1) ? (topPosPad2=1) : false; // Pad 2 restriction (top)
   (topPosPad1 >= (wind_height-padHeight)) ? (topPosPad1=wind_height-padHeight) : false; // Pad 1 restr(bttm)
   (topPosPad2 >= (wind_height-padHeight)) ? (topPosPad2=wind_height-padHeight) : false; // Pad 2 restr(bttm)
 
   /*-----------------------------------------
-  ball collision with the top & bottom paddle
+  ball collision with the top & bottom walls
   ------------------------------------------*/ 
-  if (topPosBall <= 1 || topPosBall >= wind_height-ballRadius) {
-    topSpeedOfBall = -topSpeedOfBall;
-    // sound.play(); 
-  }
+  (topPosBall <= 1 || topPosBall >= wind_height-ballRadius) ? (topSpeedOfBall = -topSpeedOfBall) : false;
+  
   /*-----------------------------------
   ball collision with the left  paddle
   ------------------------------------*/
+  let bttmPosPad1 = topPosPad1 + padHeight;
   if (leftPosBall <= padWidth)  {
-    if(topPosBall > topPosPad1 && topPosBall < topPosPad1 + padHeight) {
+    if(topPosBall >= topPosPad1 && topPosBall < bttmPosPad1) {
       leftSpeedOfBall = -leftSpeedOfBall;
       sound.play()
     } else {
       score2++;
+      $('#sign2').addClass('fa fa-thumbs-up fa-5x');
+      $('#sign1').addClass('fa fa-thumbs-down fa-5x');
       checkWin()
       ballMove();
       topSpeedOfBall=0;
       leftSpeedOfBall=0;
-      // $('#win').remove();
-
+      setTimeout(function () {
+        $('#sign2').removeClass('fa fa-thumbs-up fa-5x')
+        $('#sign1').removeClass('fa fa-thumbs-down fa-5x')
+      }, 2000);
     }
   }
+
   /*-----------------------------------
   ball collision with the right  paddle
   ------------------------------------*/
+  let bttmPosPad2 = topPosPad1+padHeight;
   if ((leftPosBall+40) >= (wind_width - ballRadius - padWidth)) {
     console.log('collision')
-    if (topPosBall > topPosPad2 && topPosBall < topPosPad2 + padHeight) {
+    if (topPosBall > topPosPad2 && topPosBall < bttmPosPad2) {
       leftSpeedOfBall = -leftSpeedOfBall;
       sound.play();
     } else {
       score1++;
+      $('#sign1').addClass('fa fa-thumbs-up fa-5x');
+      $('#sign2').addClass('fa fa-thumbs-down fa-5x');
       checkWin()
       ballMove();
       topSpeedOfBall=0;
       leftSpeedOfBall=0;
-      // $('#win').remove();
-      
+      setTimeout(function () {
+        $('#sign1').removeClass('fa fa-thumbs-up fa-5x')
+        $('#sign2').removeClass('fa fa-thumbs-down fa-5x')
+      }, 2000);
     }
   } 
-  $('#score1').text(player1+ ": " + score1.toString());
-  $('#score2').text(player2 + ": " + score2.toString());
 }, 1000/70);
 
-/*------------------------------------------------------------------
-Integrating a function to stop the paddles when the key is unpressed
-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+Integrating event listener on keyUP to stop the paddles when the key is unpressed
+-------------------------------------------------------------------------------*/
 document.addEventListener('keyup', (e) => {
   switch(e.which) {
     case 81:
