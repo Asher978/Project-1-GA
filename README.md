@@ -10,7 +10,7 @@
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame1)
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame2)
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame3)
-![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame4)
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame4git status)
 
 
 ## Technical Discussion
@@ -38,7 +38,6 @@ Also thanks to Remsey who actually showed and helped me see the bigger picture b
 
 ## Opportunities for Future Growth
 
-> If you had more time to work on your game, what would you do?
 *  Add difficulty levels - where the ball moves faster after scoring certain points
 *  Integration of AI player. Currently both players have to be human.
 *  Use of media queries for different screen resolutions and for mobile. 
@@ -46,3 +45,4 @@ Also thanks to Remsey who actually showed and helped me see the bigger picture b
 
 
 ## URL: http://veterinarian-cat-40841.bitballoon.com/
+## URL: https://asher978.github.io/Project-1-GA/index.html
