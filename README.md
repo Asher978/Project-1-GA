@@ -6,6 +6,13 @@
 
 > Ping Pong is a fun multiplayer game inspired out of Table-Tennis. Players get to select their names at the beginning of the game. There are only three moving elements in the game. The two paddles and the ball. Each player has control of his/her respective pads. The pads only move on the Y-Axis (up and down). Ball can move in any direction. Goal is to hit the ball with the paddle if coming towards your direction. The player who misses the most hitable balls loses. 
 
+## Wire Frames
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame1)
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame2)
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame3)
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame4)
+
+
 ## Technical Discussion
 
 > #### Technoligies used in this game
