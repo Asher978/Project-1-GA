@@ -17,6 +17,7 @@ let leftSpeedOfBall = 0;
 let score1=0;
 let score2=0;
 let sound = new Audio("ball.mp3"); 
+let winSound = new Audio("win.wav");
 
 /*----------------------------------------------------------
 Creating the game components and appending them to the BODY
@@ -116,6 +117,7 @@ let checkWin = () => {
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
     const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
+    winSound.play();
     score1 = 0;
     score2 = 0;
    }
@@ -130,6 +132,7 @@ let checkWin = () => {
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="./images/giphy.mp4" type="video/mp4">').appendTo($winDiv);
     const $source2 = $('<source src="./images/git giphy.webm" type="video/webm">').appendTo($winDiv);
+    winSound.play();
     score2 = 0;
     score1 = 0;
 
