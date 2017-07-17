@@ -1,12 +1,15 @@
 *** Asher Shaheen / 07-11-2017 ***
 
- # Space Code Invaders - Proposal
+ # Ping Pong - Proposal
 
 
-## What is Space Code Invaders?
-**Space Code Invaders** is a two-dimensional first shooter game. It is inspired by the original *Space Invaders* created by *Tomohiro Nishikado* and released in *1978*. The logic of the game is that user defeats the wave of alien ships with a laser canon and earns as many points as he/she can. 
+## What is Ping Pong?
+**PingPong** is a two-player game inspired out of tennis. Usually played on a table. Rackets are wooden and the ball id plastic. Tennis like inspired. Some say this game originated from China and some disagree. 
 
-I picked this game as it presents a challenge to figure out the logic behind object collisions and use of prototypes. My learning objective behind this is to strengthen my knowledge on the material that has been presented to me in last 2 weeks. 
+### Taken from Google:
+Ping-pong diplomacy (Chinese: 乒乓外交 Pīngpāng wàijiāo) refers to the exchange of table tennis (ping-pong) players between the United States and People's Republic of China (PRC) in the early 1970s. The event marked a thaw in Sino-American relations that paved the way to a visit to Beijing by President Richard Nixon.
+
+I picked this game as it presents a challenge to figure out the logic behind object collisions. My learning objective behind this is to strengthen my knowledge on the material that has been presented to me in last 2 weeks. 
 
 
 ## Wireframe
@@ -15,15 +18,14 @@ I picked this game as it presents a challenge to figure out the logic behind obj
 
 ## Initial thoughts on game structure
 
+* Movement of the ball
 * Logic / Algoritham behind collision 
-  *  collision of laser cannon and the enemy ship
-  *  collision of the user ship to the enemy ship
-  *  setting boundries so the enemy ship and the user ship can not go out of the game space/box
-* Prototype: to create numerous enemy ships
-  *  create an army of enemy ships that share the same properties and function
-  *  Defining maybe few sublassses of enemy ships
-  *  Using prototype functions to check collions
+  *  collision of the ball to the top and bottom walls 
+  *  collision of the ball to the left and right paddle
+  *  setting boundries so the ball and the paddles do not go out of the game space/box
 * Using localStorage to keep scores
+* Setting win conditions
+* Adding sounds
 ## Phases of Completion
 
 ![Screen Shot](https://github.com/Asher978/Project-1-GA-/blob/master/screenshots/ProjectPhase.png)
