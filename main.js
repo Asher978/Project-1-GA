@@ -85,8 +85,8 @@ let ballMove = () => {
   } else {
     var x = -1;
   }
-  topSpeedOfBall = Math.random() * 7+8;  //TODO: change the values to add difficulty levels
-  leftSpeedOfBall = x * (Math.random() * 7+8);
+  topSpeedOfBall = Math.random() * 6+7;  //TODO: change the values to add difficulty levels
+  leftSpeedOfBall = x * (Math.random() * 6+7);
   // console.log(topSpeedOfBall);
   // console.log(leftSpeedOfBall);
 };
@@ -106,7 +106,7 @@ let clearGif = () => {
 created the win conditions and integrated localStorage to store's last game scores
 ---------------------------------------------------------------------------------*/
 let checkWin = () => {
-  let winScore = 3;
+  let winScore = 5;
   if (score1===winScore) {
     localStorage.setItem('highScore1', score1);
     const currentHighScore1 = localStorage.getItem('highScore1');
@@ -115,13 +115,12 @@ let checkWin = () => {
     $('#highScore').text(`Last Game's Score: ${player1}:${currentHighScore1}  ||  ${player2}:${currentLowScore1}`);
     alert(player1 + '  won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
-    const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
-    const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
+    const $source = $('<source src="./images/giphy.mp4" type="video/mp4">').appendTo($winDiv);
+    const $source2 = $('<source src="./images/giphy.webm" type="video/webm">').appendTo($winDiv);
     winSound.play();
     score1 = 0;
     score2 = 0;
    }
-
   if (score2===winScore) {
     localStorage.setItem('highScore2', score2);
     const currentHighScore2 = localStorage.getItem('highScore2');
@@ -135,7 +134,6 @@ let checkWin = () => {
     winSound.play();
     score2 = 0;
     score1 = 0;
-
   } 
 }
 /* --------------------------------------------------------------------------------------------- 
