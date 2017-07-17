@@ -15,7 +15,6 @@ body{
      background: url(./images/bgPic1.jpeg);  
     background-repeat: no-repeat;
     background-size: cover;
-    /* top: 100px; */
 }
 #paddle1{
     left: 0px;
