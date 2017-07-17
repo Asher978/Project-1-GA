@@ -1,6 +1,6 @@
 # Ping Pong
 
-[screenshot]
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/pong.png)
 
 ## What is Ping Pong?
 
@@ -16,7 +16,7 @@
 
 *  Play area of the game is designed in a container with 3 elements (two paddles and the ball) appended in it. 
 *  Event listeners are added to listen to certain keypresses for the paddle movements
-*  Main logic of the game is being run in a setInterval function at 70 frames per 1000 miliseconds. This allows for smooth and precise moevements of the paddle as well as the ball. All the collision detection is nested under this function as well.
+*  Main logic of the game is being run in a setInterval function at 70 frames per 1000 miliseconds. This allows for smooth and precise movements of the paddle as well as the ball. All the collision detection is nested under this function as well.
 *  Scores are tracked and being displayed under the win condition function. LocalStorage is being used to store last played game's scores and are being displayed as well.
 * Win conditions at this time is whoever scores 10 points wins the game.
 
