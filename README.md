@@ -23,6 +23,11 @@
 ## The Making of Ping Pong
 I initially started with Spae Invaders which later turned to Ping Pong. I really wanted to learn the collision detection and the logic behind it. There is so much Physics/Math involved behind this. Through my initial research on collision, i knew it was going to be a challeneging yet interesting topic. At the pace which i was able to start the logic, my progression was too slow for the Space invaders to come to life by due date as there were too many moving parts and collisions happening. I choose ping pong as it gave me only 3 elements that i needed to track collision and they were all moving. There were two parts in this game that were very challening for me. (figure out how to make the ball go in different directions after every turn & figuring out exactly which function needs to be called at a certain time with a set time). All in all it was a great experience. I felt in a simple game like this i was still able to give it my personal touch.
 
+## Credit
+Want to thank Joey, Aurry and Waldo for helpful chats and talking the logic out loud together. Also thanks to J Silverstein for posting the MDN JSFiddle on collision. It was very helpful. 
+Also thanks to Remsey who actually showed and helped me see the bigger picture behind collision detection. 
+
+
 
 ## Opportunities for Future Growth
 
@@ -31,3 +36,6 @@ I initially started with Spae Invaders which later turned to Ping Pong. I really
 *  Integration of AI player. Currently both players have to be human.
 *  Use of media queries for different screen resolutions and for mobile. 
 *  Re-Factor alot of my code. I felt alot of code could have been grouped better and put in functions.
+
+
+## URL: http://veterinarian-cat-40841.bitballoon.com/
