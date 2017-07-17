@@ -17,9 +17,6 @@ let leftSpeedOfBall = 0;
 let score1=0;
 let score2=0;
 let sound = new Audio("ball.mp3"); 
-// let Score1; // for localStorage use
-// let Score2; // for localStorage use
-
 
 /*----------------------------------------------------------
 Creating the game components and appending them to the BODY
@@ -43,7 +40,7 @@ let player2 = prompt('Player 2: Please enter your Name!');
 $('<button id="start" onClick="ballMove()">').text('START').css({position: 'absolute'}).appendTo($container)
 $('<button id="reset" onClick="clearGif()">').text('CLEAR').css({position: 'absolute',}).appendTo($container)
 $('<p id="directions">').text('Press "CLEAR" to reset scores and begin a new game').css({position: 'absolute', bottom: '-40px'}).appendTo($container)
-$('<p id="directions">').text('Press "START" or hit the "space bar" to spawn the ball').css({position: 'absolute', bottom: '-60px'}).appendTo($container)
+$('<p id="directions">').text('Press "START" to spawn the ball').css({position: 'absolute', bottom: '-60px'}).appendTo($container)
 
 /* --------------------------------------------------------------------------
  assigning eventlisteners to the paddles to detect movement by key presses
@@ -104,23 +101,32 @@ let clearGif = () => {
 
 
 
-/*--------------------------
-checking the win conditions 
----------------------------*/
+/*--------------------------------------------------------------------------------
+created the win conditions and integrated localStorage to store's last game scores
+---------------------------------------------------------------------------------*/
 let checkWin = () => {
   let winScore = 3;
   if (score1===winScore) {
-    alert(player1 + ' You have won the game');
+    localStorage.setItem('highScore1', score1);
+    const currentHighScore1 = localStorage.getItem('highScore1');
+    localStorage.setItem('lowScore1', score2);
+    const currentLowScore1 = localStorage.getItem('lowScore1');
+    $('#highScore').text(`Last Game's Score: ${player1}:${currentHighScore1}  ||  ${player2}:${currentLowScore1}`);
+    alert(player1 + '  won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
     const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
     score1 = 0;
     score2 = 0;
-    
-  }
+   }
+
   if (score2===winScore) {
-    
-    alert(player2 + ' You have won the game');
+    localStorage.setItem('highScore2', score2);
+    const currentHighScore2 = localStorage.getItem('highScore2');
+    localStorage.setItem('lowScore2', score1);
+    const currentLowScore2 = localStorage.getItem('lowScore2');
+    $('#highScore').text(`Last Game's Score: ${player2}:${currentHighScore2}  ||  ${player1}:${currentLowScore2}`);
+    alert(player2 + ' won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="giphy.mp4" type="video/mp4">').appendTo($winDiv);
     const $source2 = $('<source src="giphy.webm" type="video/webm">').appendTo($winDiv);
@@ -171,7 +177,7 @@ window.setInterval(function smoothMovement() {
   (topPosPad1 >= (wind_height-padHeight)) ? (topPosPad1=wind_height-padHeight) : false; // Pad 1 restr(bttm)
   (topPosPad2 >= (wind_height-padHeight)) ? (topPosPad2=wind_height-padHeight) : false; // Pad 2 restr(bttm)
 
-  console.log($score1);
+  // console.log($score1);
 
   /*-----------------------------------------
   ball collision with the top & bottom walls
