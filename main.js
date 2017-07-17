@@ -129,7 +129,7 @@ let checkWin = () => {
     alert(player2 + ' won the game');
     const $winDiv = $('<video id="win" autoplay loop>').appendTo($container)
     const $source = $('<source src="./images/giphy.mp4" type="video/mp4">').appendTo($winDiv);
-    const $source2 = $('<source src="./images/giphy.webm" type="video/webm">').appendTo($winDiv);
+    const $source2 = $('<source src="./images/git giphy.webm" type="video/webm">').appendTo($winDiv);
     score2 = 0;
     score1 = 0;
 
