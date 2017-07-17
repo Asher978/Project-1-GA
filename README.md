@@ -10,7 +10,7 @@
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame1)
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame2)
 ![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame3)
-![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame4git status)
+![Screen Shot](https://github.com/Asher978/Project-1-GA/blob/master/screenshots/WFrame4git)
 
 
 ## Technical Discussion
